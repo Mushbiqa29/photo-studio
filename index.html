@@ -107,27 +107,27 @@ section {
             height: 70px;
             border: 3px solid rgba(255, 152, 0, 0.8);
         }
-
-        /* Fixed Navbar Gap */
-        body {
-            padding-top: 80px; /* Matches navbar height */
-        }
-
+/* Add this to your CSS */
+body.loading {
+    overflow: hidden;
+    height: 100vh;
+}
+       
         /* Loader Styles */
-        .loader-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0a0a0a;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease-out;
-        }
+      .loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-out;
+}
 
         .loader {
             width: 80px;
@@ -179,57 +179,24 @@ section {
             50% { opacity: 0.5; }
         }
 
-        /* Navbar Styles - Enhanced */
-        /* Navbar Styles */
-.navbar {
-    position: fixed;
-    top: 0;
+        
+
+       .navbar {
+    position: sticky!important; /* Changed from sticky to fixed */
+    top: 0 !important;
     left: 0;
     width: 100%;
     padding: 20px 5%;
-    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Increased z-index */
     background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(40, 0, 60, 0.98) 100%);
+    box-shadow: 0 5px 30px rgba(156, 39, 176, 0.3);
+    border-bottom: 1px solid rgba(233, 30, 99, 0.2);
+    transition: all 0.3s ease;
 }
-
-/* Mobile menu styles */
-.nav-links {
-    /* Your existing styles */
-    transition: all 0.8s ease-out;
-}
-
-.nav-links.active {
-    clip-path: circle(1200px at 90% -10%);
-    -webkit-clip-path: circle(1200px at 90% -10%);
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        clip-path: circle(0px at 90% -10%);
-        -webkit-clip-path: circle(0px at 90% -10%);
-    }
-}
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(40, 0, 60, 0.98) 100%);
-            box-shadow: 0 5px 30px rgba(156, 39, 176, 0.3);
-            border-bottom: 1px solid rgba(233, 30, 99, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
+      .navbar.scrolled {
             padding: 15px 5%;
             background: rgba(20, 20, 20, 0.95);
             backdrop-filter: blur(10px);
@@ -2403,22 +2370,25 @@ section {
     </footer>
 
     <script>
-        // Loader
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loader').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('loader').style.display = 'none';
-                    // Show cursor after loader is gone
-                    document.getElementById('cursor').style.display = 'block';
-                    document.getElementById('cursorFollower').style.display = 'block';
-                    // Add color reveal effect after loader
-                    document.body.classList.add('color-reveal');
-                }, 800);
-            }, 2000); // Increased loader display time for better visibility
-        });
+  // Show loader immediately
+document.body.classList.add('loading');
+document.getElementById('loader').style.display = 'flex';
 
-   // Mobile menu toggle - Put this in your JavaScript
+// Hide loader after everything is loaded
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(function() {
+            document.getElementById('loader').style.display = 'none';
+            document.body.classList.remove('loading');
+            document.body.classList.add('color-reveal');
+            // Show cursor after loader is gone
+            document.getElementById('cursor').style.display = 'block';
+            document.getElementById('cursorFollower').style.display = 'block';
+        }, 800);
+    }, 1200); // Loader stays at least 1.2s after load
+});
+   // Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 const navItems = document.querySelectorAll('.nav-links li');
@@ -2674,5 +2644,6 @@ window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', animateOnScroll);
     </script>
+    
 </body>
 </html>
