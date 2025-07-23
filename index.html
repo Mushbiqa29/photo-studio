@@ -16,6 +16,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -23,7 +24,6 @@
             background-color: #0a0a0a;
             color: white;
             overflow-x: hidden;
-            width: 100vw;
             position: relative;
             filter: grayscale(100%);
             transition: filter 1s ease;
@@ -189,7 +189,7 @@ body.loading {
         
 
        .navbar {
-    position: fixed!important; /* Changed from sticky to fixed */
+    position: fixed !important; /* Changed from sticky to fixed */
     top: 0 ;
     left: 0;
     width: 100%;
@@ -613,7 +613,7 @@ body.loading {
         /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 30px;
             margin-top: 50px;
         }
@@ -723,7 +723,7 @@ body.loading {
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 20px;
         }
 
@@ -969,7 +969,7 @@ body.loading {
         /* Studio Tour Section */
         .studio-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns:1fr 1fr 1fr;
             gap: 30px;
             margin-top: 50px;
         }
@@ -1255,7 +1255,14 @@ body.loading {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(156, 39, 176, 0.6);
         }
-
+.loader-container,
+.particles-container,
+.floating-particles,
+.cosmic-particles {
+    width: 100%;
+    left: 0;
+    right: 0;
+}
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -1462,6 +1469,9 @@ body.loading {
                 height: 400px;
             }
             .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .studio-features {
                 grid-template-columns: 1fr;
             }
             .back-to-top {
@@ -1971,7 +1981,7 @@ body.loading {
   </div>
 
   <!-- Zig-Zag Avatar Grid -->
-  <div class="avatar-grid" style="position:relative; height:140px; margin-bottom:80px; z-index:2;">
+  <div class="avatar-grid" style="position:relative; height:140px; margin-bottom:80px; z-index:2;top:30px;">
     <!-- Avatar 1 (Top) -->
     <div class="author-avatar active" data-index="0" style="position:absolute; left:10%; top:0; transform:scale(1.2); z-index:3; transition:all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);">
       <div class="avatar-glow" style="position:absolute; top:-15px; left:-15px; right:-15px; bottom:-15px; border-radius:50%; background:radial-gradient(circle, rgba(233,30,99,0.4) 0%, transparent 70%); animation:pulse 3s infinite;"></div>
@@ -2348,6 +2358,7 @@ styleElement.textContent = `
       height: 120px;
       margin-bottom: 60px;
       right:25px;
+      top:30px;
     }
     .author-avatar {
       width: 60px !important;
