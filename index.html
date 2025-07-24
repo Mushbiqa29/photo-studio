@@ -6,6 +6,12 @@
     <title>LuxFrame Studio | Premium Photography</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <style>
         /* Reset and Base Styles */
         * {
@@ -694,99 +700,6 @@ body.loading {
             color: #ff9800;
         }
 
-        /* Portfolio Section */
-        .portfolio-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tab-btn {
-            padding: 10px 25px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .tab-btn:hover, .tab-btn.active {
-            background: linear-gradient(45deg, #9c27b0, #e91e63);
-            border-color: transparent;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 300px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            filter: grayscale(100%);
-            transition: all 0.5s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .portfolio-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .portfolio-item:hover {
-            filter: grayscale(0%);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.4);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover .portfolio-image {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-
-        .portfolio-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .portfolio-category {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
         /* Pricing Plans */
         .pricing-plans {
             display: flex;
@@ -887,141 +800,14 @@ body.loading {
             border-bottom: none;
         }
 
-        /* Process Section */
-        .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
-            position: relative;
-        }
+      
 
-        .process-steps::before {
-            content: '';
-            position: absolute;
-            top: 50px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ff9800, #e91e63);
-            z-index: 0;
-        }
-
-        .process-step {
-            flex: 1;
-            min-width: 200px;
-            max-width: 250px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            filter: grayscale(100%);
-            transition: filter 0.6s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .process-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .process-step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(156, 39, 176, 0.4);
-            filter: grayscale(0%);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #9c27b0, #e91e63);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
-        }
-
-        .step-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .step-description {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-        }
-
-        
-
-        /* Studio Tour Section */
-        .studio-features {
-            display: grid;
-            grid-template-columns:1fr 1fr 1fr;
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .studio-feature {
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            filter: grayscale(100%);
-            transition: filter 0.6s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .studio-feature.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .studio-feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(156, 39, 176, 0.4);
-            filter: grayscale(0%);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff9800, #e91e63);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .feature-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-description {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-        }
 
         /* Contact Section */
         .contact-container {
             display: flex;
+            justify-content:center;
             flex-wrap: wrap;
-            gap: 40px;
             margin-top: 50px;
         }
 
@@ -1417,9 +1203,7 @@ body.loading {
             .film-frame {
                 height: 180px;
             }
-            .process-steps::before {
-                display: none;
-            }
+        
             .process-step {
                 min-width: 100%;
                 margin-bottom: 20px;
@@ -1468,12 +1252,8 @@ body.loading {
             .about-image {
                 height: 400px;
             }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .studio-features {
-                grid-template-columns: 1fr;
-            }
+          
+            
             .back-to-top {
                 width: 40px;
                 height: 40px;
@@ -1790,71 +1570,322 @@ body.loading {
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="section" id="portfolio">
-        <h2 class="section-title">Our Portfolio</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: rgba(255,255,255,0.7); line-height: 1.8;">
-            Browse our work in an interactive book collection. Each image tells a unique story captured through our lens.
-        </p>
+   
+    <!-- Add this CSS to your style section -->
+<style>
+    /* Portfolio Section Styles */
+    .portfolio-section {
+        position: relative;
+        padding: 80px 5%;
+        background: #0a0a0a;
+    }
+
+    .portfolio-tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .tab-btn {
+        padding: 8px 20px;
+        background: rgba(30, 30, 30, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+        background: linear-gradient(45deg, #9c27b0, #e91e63);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
+    }
+
+    .polaroid-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 25px;
+        padding: 10px;
+    }
+
+    .polaroid-card {
+        background: white;
+        padding: 15px 15px 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        transition: all 0.3s ease;
+        transform-origin: center;
+        border-radius: 2px;
+        will-change: transform;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInDrop 0.5s forwards;
+    }
+
+    @keyframes fadeInDrop {
+        to {
+            opacity: 1;
+            transform: translateY(0) rotate(var(--rotate));
+        }
+    }
+
+    .polaroid-card::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 20px;
+        height: 20px;
+        background: #e91e63;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #e91e63;
+        z-index: 2;
+    }
+
+    .polaroid-card:hover {
+        transform: scale(1.05) rotate(0deg) !important;
+        box-shadow: 0 10px 25px rgba(156, 39, 176, 0.4);
+        z-index: 10;
+    }
+
+    .polaroid-img-container {
+        width: 100%;
+        height: 180px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 15px;
+        background: #333;
+    }
+
+    .polaroid-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .polaroid-img.loaded {
+        opacity: 1;
+    }
+
+    .polaroid-caption {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        text-align: center;
+        color: #333;
+        margin: 0;
+    }
+
+    .load-more-btn {
+        grid-column: 1 / -1;
+        padding: 12px 25px;
+        background: linear-gradient(45deg, #9c27b0, #e91e63);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 20px auto 0;
+        display: block;
+    }
+
+    .load-more-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(156, 39, 176, 0.4);
+    }
+
+    @media (max-width: 768px) {
+        .polaroid-gallery {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
         
-        <div class="portfolio-tabs">
-            <button class="tab-btn active" data-category="all">All</button>
-            <button class="tab-btn" data-category="wedding">Wedding</button>
-            <button class="tab-btn" data-category="portrait">Portrait</button>
-            <button class="tab-btn" data-category="commercial">Commercial</button>
-            <button class="tab-btn" data-category="event">Event</button>
-        </div>
+        .polaroid-img-container {
+            height: 140px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .polaroid-gallery {
+            grid-template-columns: repeat(2, 1fr);
+        }
         
-        <div class="portfolio-grid">
-            <div class="portfolio-item" data-category="wedding">
-                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VkZGluZyUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww" alt="Wedding" class="portfolio-image">
-                <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Golden Hour Portrait</h3>
-                    <p class="portfolio-category">Wedding</p>
-                </div>
-            </div>
+        .tab-btn {
+            padding: 6px 15px;
+            font-size: 0.8rem;
+        }
+    }
+</style>
+
+<!-- Portfolio Section HTML -->
+<section class="portfolio-section" id="portfolio">
+    <h2 class="section-title">My Works</h2>
+    
+    <div class="portfolio-tabs">
+        <button class="tab-btn active" data-category="all">All</button>
+        <button class="tab-btn" data-category="wedding">Wedding</button>
+        <button class="tab-btn" data-category="portrait">Portrait</button>
+        <button class="tab-btn" data-category="travel">Travel</button>
+        <button class="tab-btn" data-category="fashion">Fashion</button>
+    </div>
+    
+    <div class="polaroid-gallery" id="gallery-container">
+        <!-- Cards will be inserted here by JavaScript -->
+    </div>
+    
+    <button class="load-more-btn" id="loadMoreBtn" style="display: none;">Load More</button>
+</section>
+
+<!-- JavaScript for Portfolio -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Your image array with local files
+        const images = [
+            // Wedding Photos
+            { src: "wedding1.jpeg", category: "wedding", caption: "First Dance" },
+            { src: "wedding2.jpeg", category: "wedding", caption: "Bride's Smile" },
+            { src: "wedding3.jpeg", category: "wedding", caption: "Ring Exchange" },
+            { src: "wedding4.jpeg", category: "wedding", caption: "Reception" },
             
-            <div class="portfolio-item" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cG9ydHJhaXQlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D" alt="Portrait" class="portfolio-image">
-                <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Urban Portrait</h3>
-                    <p class="portfolio-category">Portrait</p>
-                </div>
-            </div>
+            // Portrait Photos
+            { src: "potrait1.jpeg", category: "portrait", caption: "Thoughtful" },
+            { src: "potrait2.jpeg", category: "portrait", caption: "Serene" },
+            { src: "potrait3.jpeg", category: "portrait", caption: "Expressive" },
+            { src: "potrait4.jpeg", category: "portrait", caption: "Natural" },
             
-            <div class="portfolio-item" data-category="commercial">
-                <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29tbWVyY2lhbCUyMHNob290fGVufDB8fDB8fHww" alt="Commercial" class="portfolio-image">
-                <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Product Showcase</h3>
-                    <p class="portfolio-category">Commercial</p>
-                </div>
-            </div>
+            // Travel Photos
+            { src: "travel1.jpeg", category: "travel", caption: "Mountain View" },
+            { src: "travel2.jpeg", category: "travel", caption: "Misty Morning" },
+            { src: "travel3.jpeg", category: "travel", caption: "Road Trip" },
+            { src: "travel4.jpeg", category: "travel", caption: "Lakeside" },
             
-            <div class="portfolio-item" data-category="event">
-                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXZlbnQlMjBjb3ZlcmFnZXxlbnwwfHwwfHx8MA%3D%3D" alt="Event" class="portfolio-image">
-                <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Corporate Event</h3>
-                    <p class="portfolio-category">Event</p>
-                </div>
-            </div>
+            // Fashion Photos
+            { src: "fashion1.jpeg", category: "fashion", caption: "Urban Style" },
+            { src: "fashion2.jpeg", category: "fashion", caption: "Elegance" },
+            { src: "fashion3.jpeg", category: "fashion", caption: "Streetwear" },
+            { src: "fashion4.jpeg", category: "fashion", caption: "Bold Look" }
+        ];
+
+        // DOM elements
+        const galleryContainer = document.getElementById('gallery-container');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        
+        // Configuration
+        const initialLoadCount = 8;
+        const loadMoreCount = 8;
+        let currentCategory = 'all';
+        let displayedCount = 0;
+        let filteredImages = [];
+
+        // Initialize gallery
+        function initGallery() {
+            filterImages('all');
+            renderGallery(true);
             
-            <div class="portfolio-item" data-category="wedding">
-                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VkZGluZyUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww" alt="Wedding" class="portfolio-image">
-                <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Bridal Portrait</h3>
-                    <p class="portfolio-category">Wedding</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cG9ydHJhaXQlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D" alt="Portrait" class="portfolio-image">
-                <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Studio Portrait</h3>
-                    <p class="portfolio-category">Portrait</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Event listeners for filter buttons
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentCategory = button.dataset.category;
+                    filterImages(currentCategory);
+                    renderGallery(true);
+                });
+            });
+
+            // Load more button
+            loadMoreBtn.addEventListener('click', () => {
+                displayedCount += loadMoreCount;
+                renderGallery();
+            });
+        }
+
+        // Filter images by category
+        function filterImages(category) {
+            filteredImages = category === 'all' 
+                ? [...images] 
+                : images.filter(img => img.category === category);
+            displayedCount = initialLoadCount;
+        }
+
+        // Render gallery with lazy loading
+        function renderGallery(initial = false) {
+            if (initial) {
+                galleryContainer.innerHTML = '';
+                displayedCount = initialLoadCount;
+            }
+
+            const imagesToShow = filteredImages.slice(0, displayedCount);
+            const fragment = document.createDocumentFragment();
+
+            imagesToShow.forEach((image, index) => {
+                const rotation = (Math.random() * 12) - 6;
+                const card = document.createElement('div');
+                card.className = 'polaroid-card';
+                card.style.setProperty('--rotate', `${rotation}deg`);
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="polaroid-img-container">
+                        <img 
+                            src="${image.src}" 
+                            alt="${image.caption}" 
+                            class="polaroid-img" 
+                            loading="lazy"
+                            onload="this.classList.add('loaded')"
+                        >
+                    </div>
+                    <p class="polaroid-caption">${image.caption}</p>
+                `;
+                
+                fragment.appendChild(card);
+            });
+
+            galleryContainer.appendChild(fragment);
+
+            // Show/hide load more button
+            if (filteredImages.length > displayedCount) {
+                loadMoreBtn.style.display = 'block';
+            } else {
+                loadMoreBtn.style.display = 'none';
+            }
+        }
+
+        // Initialize Intersection Observer for lazy loading
+        function initIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.onload = () => {
+                            img.classList.add('loaded');
+                        };
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '100px'
+            });
+
+            document.querySelectorAll('.polaroid-img[loading="lazy"]').forEach(img => {
+                observer.observe(img);
+            });
+        }
+
+        // Initialize the gallery
+        initGallery();
+    });
+</script>
+
 
     <!-- Pricing Plans Section -->
     <section class="section" id="pricing">
@@ -1907,55 +1938,388 @@ body.loading {
             </div>
         </div>
     </section>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxFrame Process</title>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #9c27b0;
+            --secondary-color: #e91e63;
+            --dark-bg: rgba(30, 30, 30, 0.95);
+            --card-bg: rgba(40, 40, 40, 0.9);
+            --text-light: rgba(255, 255, 255, 0.95);
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: #121212;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        /* Card Deck Container */
+        .process-deck {
+            width: 100%;
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .mySwiper2 {
+            width: 100%;
+            height: 500px;
+            padding: 20px 0;
+            overflow: visible;
+        }
+        
+        .swiper-slide {
+            width: 300px;
+            height: 420px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            transform: scale(0.9);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            z-index: 1;
+        }
+        
+        .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+        }
+        
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        .step-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .step-description {
+            color: var(--text-muted);
+            line-height: 1.7;
+            text-align: center;
+            font-size: 0.95rem;
+            margin-top: 25px;
+        }
+        
+        /* Navigation Arrows */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .cta-subtitle {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.6);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .swiper-slide {
+                width: 280px;
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 260px;
+                height: 380px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .swiper-slide {
+                width: 240px;
+                height: 360px;
+                padding: 30px 20px;
+            }
+            
+            .step-title {
+                font-size: 1.3rem;
+            }
+            
+            .step-description {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
     <!-- Process Section -->
     <section class="section" id="process">
         <h2 class="section-title">Our Process</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: rgba(255,255,255,0.7); line-height: 1.8;">
+        <p class="section-subtitle">
             From concept to delivery, we ensure every step is executed with precision and care to create your perfect images.
         </p>
         
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-number">1</div>
-                <h3 class="step-title">Consultation</h3>
-                <p class="step-description">We discuss your vision, requirements, and creative goals to understand exactly what you're looking for.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">2</div>
-                <h3 class="step-title">Planning</h3>
-                <p class="step-description">We schedule your session and plan every detail from location to lighting to ensure perfect results.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">3</div>
-                <h3 class="step-title">Capture</h3>
-                <p class="step-description">Our professional photography session where we bring your vision to life with cinematic precision.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">4</div>
-                <h3 class="step-title">Edit & Enhance</h3>
-                <p class="step-description">Post-production magic where we enhance each image to perfection using professional editing techniques.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">5</div>
-                <h3 class="step-title">Delivery</h3>
-                <p class="step-description">Receive your stunning images in high resolution, ready for print or digital use, delivered on time.</p>
+        <div class="process-deck">
+            <!-- Swiper Container -->
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Consultation</h3>
+                        <p class="step-description">We discuss your vision, requirements, and creative goals to understand exactly what you're looking for.</p>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Planning</h3>
+                        <p class="step-description">We schedule your session and plan every detail from location to lighting to ensure perfect results.</p>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Capture</h3>
+                        <p class="step-description">Our professional photography session where we bring your vision to life with cinematic precision.</p>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Edit & Enhance</h3>
+                        <p class="step-description">Post-production magic where we enhance each image to perfection using professional editing techniques.</p>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">Delivery</h3>
+                        <p class="step-description">Receive your stunning images in high resolution, ready for print or digital use, delivered on time.</p>
+                    </div>
+                </div>
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
         
-        <div style="text-align: center; margin-top: 60px;">
-            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px;">Ready to Start Your Journey?</h3>
-            <p style="max-width: 600px; margin: 0 auto 30px; color: rgba(255,255,255,0.7); line-height: 1.8;">
+        <div class="cta-section">
+            <h3 class="cta-title">Ready to Start Your Journey?</h3>
+            <p class="cta-subtitle">
                 Let's create something amazing together. Get in touch to begin your LuxFrame experience.
             </p>
             <a href="#contact" class="cta-button">Start Your Project</a>
         </div>
     </section>
 
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Initialize Swiper -->
+    <script>
+        const swiper2 = new Swiper('.mySwiper2', {
+            effect: 'cards',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            initialSlide: 2,
+            cardsEffect: {
+                perSlideOffset: 8,
+                perSlideRotate: 0,
+                slideShadows: false
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on: {
+                init: function() {
+                    // Force proper initial stacked appearance
+                    this.slides.forEach((slide, index) => {
+                        const offset = index - this.activeIndex;
+                        slide.style.transform = `translateX(${offset * 15}px)`;
+                        slide.style.opacity = index === this.activeIndex ? '1' : '0.7';
+                        slide.style.zIndex = 100 - Math.abs(offset);
+                    });
+                },
+                slideChange: function() {
+                    // Maintain proper stacking during navigation
+                    this.slides.forEach((slide, index) => {
+                        const offset = index - this.activeIndex;
+                        slide.style.transform = `translateX(${offset * 15}px)`;
+                        slide.style.opacity = index === this.activeIndex ? '1' : '0.7';
+                        slide.style.zIndex = 100 - Math.abs(offset);
+                        slide.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+                    });
+                },
+                transitionStart: function() {
+                    // Disable transitions during drag
+                    this.slides.forEach(slide => {
+                        slide.style.transition = 'none';
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+   
    <!-- COMPLETE TESTIMONIAL SECTION -->
     
   <!-- Section Header -->
@@ -2394,75 +2758,365 @@ styleElement.textContent = `
 document.head.appendChild(styleElement);
 </script>
 
+    
+    <style>
+       
+
+        .section {
+            padding: 80px 20px;
+            max-width:100vw;
+            margin: 0 auto;
+            background: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.85); /* Dark overlay for readability */
+            z-index: 0;
+        }
+
+        .section *:not(.studio-feature) {
+            position: relative;
+            z-index: 1;
+        }
+
+        
+        .section p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Photography-Inspired Droplet Cards */
+        .studio-features {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .studio-feature {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+            border-radius: 61% 39% 52% 48% / 44% 59% 41% 56%;
+            transition: all 0.5s ease-in-out;
+            filter: grayscale(80%) brightness(0.9);
+            opacity: 0;
+            transform: translateY(30px);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .studio-feature::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .studio-feature:hover::before {
+            opacity: 1;
+        }
+
+        .studio-feature.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .studio-feature:hover {
+            border-radius: 50%;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow:
+                0 15px 40px rgba(231, 76, 60, 0.3),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
+            background: rgba(40, 40, 40, 0.7);
+             color:  #ac1467;
+           
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            filter: grayscale(0%) brightness(1.1);
+            
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        /* Custom Navigation (Camera-Inspired) */
+        .studio-features .swiper-button-next,
+        .studio-features .swiper-button-prev {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .studio-features .swiper-button-next:hover,
+        .studio-features .swiper-button-prev:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .studio-features .swiper-button-next::after,
+        .studio-features .swiper-button-prev::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border: 2px solid #fff;
+            border-width: 2px 2px 0 0;
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .studio-features .swiper-button-prev::after {
+            transform: rotate(-135deg);
+        }
+
+        .studio-features .swiper-button-next:hover::after,
+        .studio-features .swiper-button-prev:hover::after {
+            border-color: #ff8a00;
+            width: 15px;
+            height: 15px;
+        }
+
+        .studio-features .swiper-button-next {
+            right: 10px !important;
+        }
+
+        .studio-features .swiper-button-prev {
+            left: 10px !important;
+        }
+
+        .studio-features .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .studio-features .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(255, 138, 0, 0.7);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 15px;
+                background-attachment: scroll;
+            }
+            
+            .studio-feature {
+                height: 350px;
+                padding: 30px;
+            }
+            
+            .studio-features .swiper-button-next,
+            .studio-features .swiper-button-prev {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .studio-feature {
+                height: 320px;
+                padding: 25px;
+            }
+            
+            .feature-icon {
+                font-size: 2rem;
+            }
+            
+            .feature-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+
     <!-- Studio Tour Section -->
     <section class="section" id="studio">
         <h2 class="section-title">Studio Tour</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: rgba(255,255,255,0.7); line-height: 1.8;">
-            Take a virtual tour of our professional photography studio equipped with the latest technology to create stunning images.
+        <p>
+            Step into our professional photography studio, where cutting-edge technology meets artistic vision to create breathtaking imagery.
         </p>
         
-        <div class="studio-features">
-            <div class="studio-feature">
-                <div class="feature-icon">
-                    <i class="fas fa-camera"></i>
+        <div class="studio-features swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="studio-feature swiper-slide">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3 class="feature-title">Professional Gear</h3>
+                    <p class="feature-description">
+                        High-end Canon & Sony cameras with premium lenses for flawless image quality in every shot.
+                    </p>
                 </div>
-                <h3 class="feature-title">Professional Equipment</h3>
-                <p class="feature-description">
-                    Latest Canon and Sony cameras with precision lenses for every scenario, ensuring the highest quality images.
-                </p>
-            </div>
-            
-            <div class="studio-feature">
-                <div class="feature-icon">
-                    <i class="fas fa-lightbulb"></i>
+                
+                <div class="studio-feature swiper-slide">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="feature-title">Studio Lighting</h3>
+                    <p class="feature-description">
+                        Advanced strobes and continuous lighting with modifiers for perfect illumination control.
+                    </p>
                 </div>
-                <h3 class="feature-title">Advanced Lighting</h3>
-                <p class="feature-description">
-                    Professional studio lighting setup with modifiers for perfect illumination control in any situation.
-                </p>
-            </div>
-            
-            <div class="studio-feature">
-                <div class="feature-icon">
-                    <i class="fas fa-desktop"></i>
+                
+                <div class="studio-feature swiper-slide">
+                    <div class="feature-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3 class="feature-title">Live Preview</h3>
+                    <p class="feature-description">
+                        Instant image review on calibrated 4K monitors for real-time feedback and adjustments.
+                    </p>
                 </div>
-                <h3 class="feature-title">Live Preview</h3>
-                <p class="feature-description">
-                    Real-time image preview on large calibrated monitors for instant feedback and collaboration.
-                </p>
-            </div>
-            
-            <div class="studio-feature">
-                <div class="feature-icon">
-                    <i class="fas fa-paint-roller"></i>
+                
+                <div class="studio-feature swiper-slide">
+                    <div class="feature-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3 class="feature-title">Custom Backdrops</h3>
+                    <p class="feature-description">
+                        Diverse selection of backdrops and props to create the perfect setting for your vision.
+                    </p>
                 </div>
-                <h3 class="feature-title">Creative Backdrops</h3>
-                <p class="feature-description">
-                    Variety of backdrop settings and props available to create the perfect environment for your shoot.
-                </p>
-            </div>
-            
-            <div class="studio-feature">
-                <div class="feature-icon">
-                    <i class="fas fa-tshirt"></i>
+                
+                <div class="studio-feature swiper-slide">
+                    <div class="feature-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="feature-title">Wardrobe</h3>
+                    <p class="feature-description">
+                        Extensive collection of outfits and accessories to complement your photography session.
+                    </p>
                 </div>
-                <h3 class="feature-title">Wardrobe & Props</h3>
-                <p class="feature-description">
-                    Extensive collection of wardrobe options and props to enhance your photography session.
-                </p>
-            </div>
-            
-            <div class="studio-feature">
-                <div class="feature-icon">
-                    <i class="fas fa-coffee"></i>
+                
+                <div class="studio-feature swiper-slide">
+                    <div class="feature-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="feature-title">Client Lounge</h3>
+                    <p class="feature-description">
+                        Comfortable waiting area with refreshments for a relaxing studio experience.
+                    </p>
                 </div>
-                <h3 class="feature-title">Client Lounge</h3>
-                <p class="feature-description">
-                    Comfortable waiting area with refreshments for clients and guests during sessions.
-                </p>
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            grabCursor: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 40
+                }
+            }
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const features = document.querySelectorAll('.studio-feature');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            features.forEach(feature => {
+                observer.observe(feature);
+            });
+        });
+    </script>
 
     <!-- Contact Section -->
     <section class="section" id="contact">
@@ -2677,7 +3331,7 @@ navItems.forEach(item => {
         });
 
         // Activate cursor on hover elements
-        const hoverElements = document.querySelectorAll('a, button, .portfolio-item, .service-card, .process-step, .studio-feature, .testimonial-card, .film-frame, input, textarea, select');
+        const hoverElements = document.querySelectorAll('a, button, .service-card, .process-step, .studio-feature, .testimonial-card, .film-frame, input, textarea, select');
         
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -2694,31 +3348,6 @@ navItems.forEach(item => {
         // Color reveal effect
         document.addEventListener('mousemove', function() {
             document.body.classList.add('color-reveal');
-        });
-
-        // Portfolio filtering
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const category = button.getAttribute('data-category');
-                
-                // Filter portfolio items
-                portfolioItems.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
         });
 
         // Form submission
@@ -2891,7 +3520,7 @@ window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
 
         // Initialize animation state
-        document.querySelectorAll('.portfolio-item, .pricing-card, .process-step, .testimonial-card, .studio-feature').forEach(el => {
+        document.querySelectorAll('.pricing-card, .process-step, .testimonial-card, .studio-feature').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
