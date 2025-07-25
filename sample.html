@@ -1,0 +1,39 @@
+
+<script>
+    let currentAngle = 0;
+const segments = 6;
+const ring = document.querySelector('.lens-ring');
+
+// Rotate lens on arrow click
+document.querySelectorAll('.lens-nav').forEach(button => {
+    button.addEventListener('click', () => {
+        currentAngle += button.classList.contains('next') ? 60 : -60;
+        ring.style.transform = `rotate(${currentAngle}deg)`;
+        updateActiveService();
+    });
+});
+
+// Swipe for mobile
+let touchStartX = 0;
+ring.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+
+ring.addEventListener('touchend', (e) => {
+    if (touchStartX - e.changedTouches[0].clientX > 50) {
+        currentAngle += 60; // Swipe left
+    } else if (touchStartX - e.changedTouches[0].clientX < -50) {
+        currentAngle -= 60; // Swipe right
+    }
+    ring.style.transform = `rotate(${currentAngle}deg)`;
+    updateActiveService();
+});
+
+// Update active service
+function updateActiveService() {
+    const activeIndex = (360 - (currentAngle % 360)) / 60;
+    document.querySelectorAll('.service-segment').forEach((seg, i) => {
+        seg.classList.toggle('active', i === activeIndex);
+    });
+}
+</script>

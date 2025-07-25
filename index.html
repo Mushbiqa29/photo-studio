@@ -11,7 +11,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <style>
         /* Reset and Base Styles */
         * {
@@ -63,11 +64,12 @@ section {
         flex-direction: column;
     }
     .cursor{
-        display: none;
+        display: none !important;
     }
     .cursor-follower{
-        display: none;
+        display: none !important;
     }
+
 }
         .scroll-progress {
             position: fixed;
@@ -498,11 +500,7 @@ body.loading {
         }
 
         /* Section Styles */
-        .section {
-            padding: 100px 5%;
-            position: relative;
-            overflow: hidden;
-        }
+       
 
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -615,194 +613,86 @@ body.loading {
         .about-image:hover img {
             transform: scale(1.05);
         }
+/* Core Lens Styles */
+.lens-container {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    margin: 0 auto;
+}
 
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            margin-top: 50px;
-        }
+/* Rotating Ring */
+.lens-ring {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform-style: preserve-3d;
+}
 
-        .service-card {
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            filter: grayscale(100%);
-            transition: filter 0.6s ease;
-        }
+/* Service Segments (Curved Text) */
+.service-segment {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: rotate(calc(60deg * var(--i))) translateY(-140px);
+    text-align: center;
+    cursor: pointer;
+}
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(156, 39, 176, 0.4);
-            filter: grayscale(0%);
-        }
+.service-name {
+    display: inline-block;
+    transform: rotate(calc(-60deg * var(--i)));
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
 
-        .service-image {
-            height: 200px;
-            overflow: hidden;
-        }
+/* Aperture Animation */
+.aperture {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+.blades {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    clip-path: polygon(0% 50%, 50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transition: clip-path 0.5s ease;
+}
 
-        .service-card:hover .service-image img {
-            transform: scale(1.1);
-        }
+/* Service Preview Panel */
+.service-preview {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
-        .service-content {
-            padding: 25px;
-        }
+/* Interactive States */
+.service-segment:hover ~ .aperture .blades {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Open aperture */
+}
 
-        .service-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: white;
-        }
+.service-segment.active {
+    color: #ff9800; /* Highlight active service */
+}
 
-        .service-description {
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-        }
-
-        .service-features {
-            margin-bottom: 20px;
-        }
-
-        .service-features li {
-            margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.7);
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .service-features li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(45deg, #ff9800, #e91e63);
-            border-radius: 50%;
-        }
-
-        .service-price {
-            font-weight: 600;
-            color: #ff9800;
-        }
-
-        /* Pricing Plans */
-        .pricing-plans {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .pricing-card {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .pricing-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(156, 39, 176, 0.5);
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #ff9800, #e91e63);
-        }
-
-        .pricing-card.popular::before {
-            height: 10px;
-            background: linear-gradient(90deg, #9c27b0, #e91e63);
-        }
-
-        .pricing-card.popular::after {
-            content: 'Most Popular';
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: #e91e63;
-            color: white;
-            padding: 5px 30px;
-            font-size: 0.8rem;
-            transform: rotate(45deg);
-            transform-origin: center;
-        }
-
-        .pricing-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff9800, #e91e63);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .pricing-price {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .pricing-price span {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.8);
-        }
-
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
-      
-
-
+.service-segment.active ~ .service-preview {
+    opacity: 1; /* Show preview */
+}
         /* Contact Section */
         .contact-container {
             display: flex;
@@ -1457,128 +1347,50 @@ body.loading {
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="section" id="services">
-        <h2 class="section-title">Our Services</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: rgba(255,255,255,0.7); line-height: 1.8;">
-            Professional photography services crafted with the precision of film and the innovation of digital artistry. 
-            Every session is a collaboration to create something extraordinary.
-        </p>
+   <!-- Interactive Camera Lens Services -->
+<section class="lens-services">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">Explore our photography services by rotating the lens</p>
+    
+    <!-- Lens Container -->
+    <div class="lens-container">
+        <!-- Lens Ring (Rotates) -->
+        <div class="lens-ring">
+            <!-- Service Segments (6) -->
+            <div class="service-segment" data-service="portrait" style="--i:1">
+                <span class="service-name">Portrait</span>
+            </div>
+            <div class="service-segment" data-service="wedding" style="--i:2">
+                <span class="service-name">Wedding</span>
+            </div>
+            <!-- Add 4 more segments -->
+        </div>
         
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cG9ydHJhaXQlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D" alt="Portrait Session">
-                </div>
-                <div class="service-content">
-                    <h3 class="service-title">Portrait Sessions</h3>
-                    <p class="service-description">Capture your unique personality with professional lighting and film inspired techniques.</p>
-                    <ul class="service-features">
-                        <li>Natural light & studio</li>
-                        <li>Individual & group</li>
-                        <li>Professional headshots</li>
-                        <li>Creative coverage</li>
-                    </ul>
-                    <div class="service-price">From $250</div>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VkZGluZyUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww" alt="Wedding Photography">
-                </div>
-                <div class="service-content">
-                    <h3 class="service-title">Wedding Photography</h3>
-                    <p class="service-description">Document your special day with cinematic storytelling and timeless elegance.</p>
-                    <ul class="service-features">
-                        <li>Full day coverage</li>
-                        <li>Engagement sessions</li>
-                        <li>Digital gallery</li>
-                        <li>Print packages</li>
-                    </ul>
-                    <div class="service-price">From $1200</div>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29tbWVyY2lhbCUyMHNob290fGVufDB8fDB8fHww" alt="Commercial Shoots">
-                </div>
-                <div class="service-content">
-                    <h3 class="service-title">Commercial Shoots</h3>
-                    <p class="service-description">Elevate your brand with compelling imagery that tells your story professionally.</p>
-                    <ul class="service-features">
-                        <li>Product photography</li>
-                        <li>Corporate portraits</li>
-                        <li>Brand campaigns</li>
-                        <li>Architecture</li>
-                    </ul>
-                    <div class="service-price">From $600</div>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXZlbnQlMjBjb3ZlcmFnZXxlbnwwfHwwfHx8MA%3D%3D" alt="Event Coverage">
-                </div>
-                <div class="service-content">
-                    <h3 class="service-title">Event Coverage</h3>
-                    <p class="service-description">Professional documentation of your corporate or private events with artistic flair.</p>
-                    <ul class="service-features">
-                        <li>Corporate events</li>
-                        <li>Private parties</li>
-                        <li>Conferences</li>
-                        <li>Live performances</li>
-                    </ul>
-                    <div class="service-price">From $400</div>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29uY2VydHxlbnwwfHwwfHx8MA%3D%3D" alt="Creative Projects">
-                </div>
-                <div class="service-content">
-                    <h3 class="service-title">Creative Projects</h3>
-                    <p class="service-description">Collaborate with us to bring your artistic vision to life through photography.</p>
-                    <ul class="service-features">
-                        <li>Conceptual photography</li>
-                        <li>Fine art projects</li>
-                        <li>Editorial shoots</li>
-                        <li>Experimental techniques</li>
-                    </ul>
-                    <div class="service-price">Custom Pricing</div>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29ya3Nob3B8ZW58MHx8MHx8fDA%3D" alt="Photography Workshops">
-                </div>
-                <div class="service-content">
-                    <h3 class="service-title">Photography Workshops</h3>
-                    <p class="service-description">Learn professional techniques from our experienced photographers.</p>
-                    <ul class="service-features">
-                        <li>Beginner to advanced</li>
-                        <li>Lighting techniques</li>
-                        <li>Post-processing</li>
-                        <li>Portfolio development</li>
-                    </ul>
-                    <div class="service-price">From $150</div>
-                </div>
+        <!-- Aperture Blades (Animated) -->
+        <div class="aperture">
+            <div class="blades"></div>
+            <div class="lens-center"></div>
+        </div>
+        
+        <!-- Service Preview (Dynamic Content) -->
+        <div class="service-preview">
+            <div class="preview-image" style="background-image: url('portrait-preview.jpg')"></div>
+            <div class="preview-content">
+                <h3>Portrait Sessions</h3>
+                <p>Professional lighting and film-inspired techniques.</p>
+                <button class="cta-button">View Portfolio</button>
             </div>
         </div>
-    </section>
-
-   
+    </div>
+    
+    <!-- Navigation Arrows -->
+    <button class="lens-nav prev">←</button>
+    <button class="lens-nav next">→</button>
+</section>
     <!-- Add this CSS to your style section -->
 <style>
     /* Portfolio Section Styles */
-    .portfolio-section {
-        position: relative;
-        padding: 80px 5%;
-        background: #0a0a0a;
-    }
+   
 
     .portfolio-tabs {
         display: flex;
@@ -1725,7 +1537,7 @@ body.loading {
 </style>
 
 <!-- Portfolio Section HTML -->
-<section class="portfolio-section" id="portfolio">
+<section class="  portfolio-section" id="portfolio">
     <h2 class="section-title">My Works</h2>
     
     <div class="portfolio-tabs">
@@ -1749,28 +1561,28 @@ body.loading {
         // Your image array with local files
         const images = [
             // Wedding Photos
-            { src: "wedding1.jpeg", category: "wedding", caption: "First Dance" },
-            { src: "wedding2.jpeg", category: "wedding", caption: "Bride's Smile" },
-            { src: "wedding3.jpeg", category: "wedding", caption: "Ring Exchange" },
-            { src: "wedding4.jpeg", category: "wedding", caption: "Reception" },
+            { src: "wedding1.webp", category: "wedding", caption: "First Dance" },
+            { src: "wedding2.webp", category: "wedding", caption: "Bride's Smile" },
+            { src: "wedding3.webp", category: "wedding", caption: "Ring Exchange" },
+            { src: "wedding4.webp", category: "wedding", caption: "Reception" },
             
             // Portrait Photos
-            { src: "potrait1.jpeg", category: "portrait", caption: "Thoughtful" },
-            { src: "potrait2.jpeg", category: "portrait", caption: "Serene" },
-            { src: "potrait3.jpeg", category: "portrait", caption: "Expressive" },
-            { src: "potrait4.jpeg", category: "portrait", caption: "Natural" },
+            { src: "potrait1.webp", category: "portrait", caption: "Thoughtful" },
+            { src: "potrait2.webp", category: "portrait", caption: "Serene" },
+            { src: "potrait3.webp", category: "portrait", caption: "Expressive" },
+            { src: "potrait4.webp", category: "portrait", caption: "Natural" },
             
             // Travel Photos
-            { src: "travel1.jpeg", category: "travel", caption: "Mountain View" },
-            { src: "travel2.jpeg", category: "travel", caption: "Misty Morning" },
-            { src: "travel3.jpeg", category: "travel", caption: "Road Trip" },
-            { src: "travel4.jpeg", category: "travel", caption: "Lakeside" },
+            { src: "travel1.webp", category: "travel", caption: "Mountain View" },
+            { src: "travel2.webp", category: "travel", caption: "Misty Morning" },
+            { src: "travel3.webp", category: "travel", caption: "Road Trip" },
+            { src: "travel4.webp", category: "travel", caption: "Lakeside" },
             
             // Fashion Photos
-            { src: "fashion1.jpeg", category: "fashion", caption: "Urban Style" },
-            { src: "fashion2.jpeg", category: "fashion", caption: "Elegance" },
-            { src: "fashion3.jpeg", category: "fashion", caption: "Streetwear" },
-            { src: "fashion4.jpeg", category: "fashion", caption: "Bold Look" }
+            { src: "fashion1.webp", category: "fashion", caption: "Urban Style" },
+            { src: "fashion2.webp", category: "fashion", caption: "Elegance" },
+            { src: "fashion3.webp", category: "fashion", caption: "Streetwear" },
+            { src: "fashion4.webp", category: "fashion", caption: "Bold Look" }
         ];
 
         // DOM elements
@@ -1938,68 +1750,53 @@ body.loading {
             </div>
         </div>
     </section>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxFrame Process</title>
+    <section class="section" id="process">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #9c27b0;
             --secondary-color: #e91e63;
-            --dark-bg: rgba(30, 30, 30, 0.95);
-            --card-bg: rgba(40, 40, 40, 0.9);
+            --dark-bg: #1a1a1a;
+            --card-bg: #262626;
             --text-light: rgba(255, 255, 255, 0.95);
             --text-muted: rgba(255, 255, 255, 0.7);
+            --card-width: 300px;
+            --card-height: 420px;
         }
         
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
+        .process-section {
+            padding: 80px 20px;
             background: #121212;
             font-family: 'Poppins', sans-serif;
             color: white;
-            overflow-x: hidden;
+            position: relative;
+            z-index: 1;
         }
         
-        .section {
-            padding: 80px 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
+        .process-section .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 20px;
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
         
-        .section-title::after {
+        .process-section .section-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
             height: 3px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 3px;
         }
         
-        .section-subtitle {
+        .process-section .section-subtitle {
             text-align: center;
             max-width: 800px;
             margin: 0 auto 50px;
@@ -2008,54 +1805,65 @@ body.loading {
             font-size: 1.1rem;
         }
         
-        /* Card Deck Container */
+        /* Enhanced Card Deck */
         .process-deck {
             width: 100%;
-            padding: 60px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            padding: 40px 0;
+            perspective: 1000px;
+        }
+        
+        .process-swiper {
+            width: var(--card-width);
+            height: var(--card-height);
             position: relative;
         }
         
-        .mySwiper2 {
-            width: 100%;
-            height: 500px;
-            padding: 20px 0;
-            overflow: visible;
-        }
-        
-        .swiper-slide {
-            width: 300px;
-            height: 420px;
-            background: var(--card-bg);
-            border-radius: 12px;
+        .process-slide {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            padding: 35px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4),
+                        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+            color: var(--text-light);
+            text-align: center;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-            transform: scale(0.9);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            z-index: 1;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .swiper-slide-active {
-            opacity: 1;
-            transform: scale(1);
-            z-index: 10;
-        }
-        
-        .swiper-slide::before {
+        /* Realistic Card Edge */
+        .process-slide::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
+            right: 0;
+            height: 5px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        /* Subtle Texture */
+        .process-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, 
+                          rgba(255,255,255,0.03) 0%, 
+                          transparent 50%);
+            pointer-events: none;
         }
         
         .step-number {
@@ -2069,8 +1877,9 @@ body.loading {
             align-items: center;
             font-size: 1.5rem;
             font-weight: 700;
-            margin: 0 auto 25px;
-            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.5);
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.5),
+                        0 0 0 2px rgba(255, 255, 255, 0.1) inset;
             position: relative;
             z-index: 1;
         }
@@ -2078,55 +1887,31 @@ body.loading {
         .step-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: white;
-            text-align: center;
-            position: relative;
+            margin-bottom: 15px;
             font-weight: 600;
-        }
-        
-        .step-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 3px;
+            position: relative;
+            z-index: 1;
         }
         
         .step-description {
             color: var(--text-muted);
             line-height: 1.7;
-            text-align: center;
             font-size: 0.95rem;
-            margin-top: 25px;
+            position: relative;
+            z-index: 1;
         }
         
-        /* Navigation Arrows */
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: var(--primary-color);
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            transition: all 0.3s ease;
+        /* Active Card Styling */
+        .swiper-slide-active {
+            transform: translateZ(20px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
         }
         
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        
-        .swiper-button-next::after,
-        .swiper-button-prev::after {
-            font-size: 1.2rem;
-            font-weight: bold;
+        /* Non-active cards styling */
+        .swiper-slide:not(.swiper-slide-active) {
+            filter: brightness(0.85);
+            opacity: 0.9;
         }
         
         /* CTA Section */
@@ -2163,6 +1948,8 @@ body.loading {
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+            position: relative;
+            overflow: hidden;
         }
         
         .cta-button:hover {
@@ -2171,34 +1958,25 @@ body.loading {
         }
         
         /* Responsive Adjustments */
-        @media (max-width: 1024px) {
-            .swiper-slide {
-                width: 280px;
-                height: 400px;
-            }
-        }
-        
         @media (max-width: 768px) {
-            .swiper-slide {
-                width: 260px;
-                height: 380px;
+            :root {
+                --card-width: 260px;
+                --card-height: 380px;
             }
             
-            .section-title {
+            .process-section .section-title {
                 font-size: 2rem;
             }
             
-            .swiper-button-next,
-            .swiper-button-prev {
-                display: none;
+            .process-slide {
+                padding: 25px;
             }
         }
         
         @media (max-width: 480px) {
-            .swiper-slide {
-                width: 240px;
-                height: 360px;
-                padding: 30px 20px;
+            :root {
+                --card-width: 240px;
+                --card-height: 360px;
             }
             
             .step-title {
@@ -2210,10 +1988,8 @@ body.loading {
             }
         }
     </style>
-</head>
-<body>
-    <!-- Process Section -->
-    <section class="section" id="process">
+
+    <div class=" section process-section">
         <h2 class="section-title">Our Process</h2>
         <p class="section-subtitle">
             From concept to delivery, we ensure every step is executed with precision and care to create your perfect images.
@@ -2221,41 +1997,38 @@ body.loading {
         
         <div class="process-deck">
             <!-- Swiper Container -->
-            <div class="swiper mySwiper2">
+            <div class="swiper process-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide process-slide">
                         <div class="step-number">1</div>
                         <h3 class="step-title">Consultation</h3>
                         <p class="step-description">We discuss your vision, requirements, and creative goals to understand exactly what you're looking for.</p>
                     </div>
                     
-                    <div class="swiper-slide">
+                    <div class="swiper-slide process-slide">
                         <div class="step-number">2</div>
                         <h3 class="step-title">Planning</h3>
                         <p class="step-description">We schedule your session and plan every detail from location to lighting to ensure perfect results.</p>
                     </div>
                     
-                    <div class="swiper-slide">
+                    <div class="swiper-slide process-slide">
                         <div class="step-number">3</div>
                         <h3 class="step-title">Capture</h3>
                         <p class="step-description">Our professional photography session where we bring your vision to life with cinematic precision.</p>
                     </div>
                     
-                    <div class="swiper-slide">
+                    <div class="swiper-slide process-slide">
                         <div class="step-number">4</div>
                         <h3 class="step-title">Edit & Enhance</h3>
                         <p class="step-description">Post-production magic where we enhance each image to perfection using professional editing techniques.</p>
                     </div>
                     
-                    <div class="swiper-slide">
+                    <div class="swiper-slide process-slide">
                         <div class="step-number">5</div>
                         <h3 class="step-title">Delivery</h3>
                         <p class="step-description">Receive your stunning images in high resolution, ready for print or digital use, delivered on time.</p>
                     </div>
                 </div>
-                <!-- Navigation buttons -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
             </div>
         </div>
         
@@ -2266,60 +2039,43 @@ body.loading {
             </p>
             <a href="#contact" class="cta-button">Start Your Project</a>
         </div>
-    </section>
+    </div>
 
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     
-    <!-- Initialize Swiper -->
+    <!-- Initialize Swiper with Enhanced Card Behavior -->
     <script>
-        const swiper2 = new Swiper('.mySwiper2', {
-            effect: 'cards',
+        var processSwiper = new Swiper(".process-swiper", {
+            effect: "cards",
             grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
             initialSlide: 2,
             cardsEffect: {
-                perSlideOffset: 8,
+                perSlideOffset: 12,
                 perSlideRotate: 0,
-                slideShadows: false
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                slideShadows: false,
             },
             on: {
                 init: function() {
-                    // Force proper initial stacked appearance
+                    // Set initial z-index and opacity for realistic stacking
                     this.slides.forEach((slide, index) => {
-                        const offset = index - this.activeIndex;
-                        slide.style.transform = `translateX(${offset * 15}px)`;
-                        slide.style.opacity = index === this.activeIndex ? '1' : '0.7';
-                        slide.style.zIndex = 100 - Math.abs(offset);
+                        const offset = Math.abs(index - this.activeIndex);
+                        slide.style.zIndex = 100 - offset;
+                        slide.style.opacity = 1 - (offset * 0.1);
                     });
                 },
                 slideChange: function() {
-                    // Maintain proper stacking during navigation
+                    // Update z-index and opacity during navigation
                     this.slides.forEach((slide, index) => {
-                        const offset = index - this.activeIndex;
-                        slide.style.transform = `translateX(${offset * 15}px)`;
-                        slide.style.opacity = index === this.activeIndex ? '1' : '0.7';
-                        slide.style.zIndex = 100 - Math.abs(offset);
-                        slide.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
-                    });
-                },
-                transitionStart: function() {
-                    // Disable transitions during drag
-                    this.slides.forEach(slide => {
-                        slide.style.transition = 'none';
+                        const offset = Math.abs(index - this.activeIndex);
+                        slide.style.zIndex = 100 - offset;
+                        slide.style.opacity = 1 - (offset * 0.1);
                     });
                 }
             }
         });
     </script>
-</body>
-</html>
-   
+</section>
    <!-- COMPLETE TESTIMONIAL SECTION -->
     
   <!-- Section Header -->
@@ -3066,8 +2822,7 @@ document.head.appendChild(styleElement);
         </div>
     </section>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  
     
     <script>
         // Initialize Swiper
@@ -3331,7 +3086,7 @@ navItems.forEach(item => {
         });
 
         // Activate cursor on hover elements
-        const hoverElements = document.querySelectorAll('a, button, .service-card, .process-step, .studio-feature, .testimonial-card, .film-frame, input, textarea, select');
+        const hoverElements = document.querySelectorAll('a, button, .service-card, .studio-feature, .testimonial-card, .film-frame, input, textarea, select');
         
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -3520,7 +3275,7 @@ window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
 
         // Initialize animation state
-        document.querySelectorAll('.pricing-card, .process-step, .testimonial-card, .studio-feature').forEach(el => {
+        document.querySelectorAll('.pricing-card, .testimonial-card, .studio-feature').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -3529,6 +3284,42 @@ window.addEventListener('scroll', animateOnScroll);
         // Run on load and scroll
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', animateOnScroll);
+        let currentAngle = 0;
+const segments = 6;
+const ring = document.querySelector('.lens-ring');
+
+// Rotate lens on arrow click
+document.querySelectorAll('.lens-nav').forEach(button => {
+    button.addEventListener('click', () => {
+        currentAngle += button.classList.contains('next') ? 60 : -60;
+        ring.style.transform = `rotate(${currentAngle}deg)`;
+        updateActiveService();
+    });
+});
+
+// Swipe for mobile
+let touchStartX = 0;
+ring.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+
+ring.addEventListener('touchend', (e) => {
+    if (touchStartX - e.changedTouches[0].clientX > 50) {
+        currentAngle += 60; // Swipe left
+    } else if (touchStartX - e.changedTouches[0].clientX < -50) {
+        currentAngle -= 60; // Swipe right
+    }
+    ring.style.transform = `rotate(${currentAngle}deg)`;
+    updateActiveService();
+});
+
+// Update active service
+function updateActiveService() {
+    const activeIndex = (360 - (currentAngle % 360)) / 60;
+    document.querySelectorAll('.service-segment').forEach((seg, i) => {
+        seg.classList.toggle('active', i === activeIndex);
+    });
+}
     </script>
     
 </body>
