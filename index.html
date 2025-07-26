@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LuxFrame Studio | Premium Photography</title>
@@ -11,8 +9,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Swiper JS -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <style>
         /* Reset and Base Styles */
         * {
@@ -67,9 +64,8 @@ section {
         display: none !important;
     }
     .cursor-follower{
-        display: none !important;
+        display: none!important;
     }
-
 }
         .scroll-progress {
             position: fixed;
@@ -500,7 +496,11 @@ body.loading {
         }
 
         /* Section Styles */
-       
+        .section {
+            padding: 100px 5%;
+            position: relative;
+            overflow: hidden;
+        }
 
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -613,86 +613,111 @@ body.loading {
         .about-image:hover img {
             transform: scale(1.05);
         }
-/* Core Lens Styles */
-.lens-container {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    margin: 0 auto;
-}
 
-/* Rotating Ring */
-.lens-ring {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    position: relative;
-    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-    transform-style: preserve-3d;
-}
+      
+        /* Pricing Plans */
+        .pricing-plans {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
 
-/* Service Segments (Curved Text) */
-.service-segment {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: rotate(calc(60deg * var(--i))) translateY(-140px);
-    text-align: center;
-    cursor: pointer;
-}
+        .pricing-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
 
-.service-name {
-    display: inline-block;
-    transform: rotate(calc(-60deg * var(--i)));
-    font-weight: 600;
-    color: white;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
+        .pricing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* Aperture Animation */
-.aperture {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(156, 39, 176, 0.5);
+        }
 
-.blades {
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    border-radius: 50%;
-    clip-path: polygon(0% 50%, 50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%);
-    transition: clip-path 0.5s ease;
-}
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9800, #e91e63);
+        }
 
-/* Service Preview Panel */
-.service-preview {
-    position: absolute;
-    bottom: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
+        .pricing-card.popular::before {
+            height: 10px;
+            background: linear-gradient(90deg, #9c27b0, #e91e63);
+        }
 
-/* Interactive States */
-.service-segment:hover ~ .aperture .blades {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Open aperture */
-}
+        .pricing-card.popular::after {
+            content: 'Most Popular';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #e91e63;
+            color: white;
+            padding: 5px 30px;
+            font-size: 0.8rem;
+            transform: rotate(45deg);
+            transform-origin: center;
+        }
 
-.service-segment.active {
-    color: #ff9800; /* Highlight active service */
-}
+        .pricing-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff9800, #e91e63);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-.service-segment.active ~ .service-preview {
-    opacity: 1; /* Show preview */
-}
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+      
+
+
         /* Contact Section */
         .contact-container {
             display: flex;
@@ -1338,7 +1363,7 @@ body.loading {
                     </div>
                 </div>
 
-                <h3>Our Mission</h3>
+                <h3 style="text-align: center;">Our Mission</h3>
                 <p>To transform fleeting moments into lasting memories through the art of photography, bringing out the beauty and emotion in every frame.</p>
             </div>
             <div class="about-image">
@@ -1346,51 +1371,553 @@ body.loading {
             </div>
         </div>
     </section>
+<section>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-   <!-- Interactive Camera Lens Services -->
-<section class="lens-services">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-subtitle">Explore our photography services by rotating the lens</p>
-    
-    <!-- Lens Container -->
-    <div class="lens-container">
-        <!-- Lens Ring (Rotates) -->
-        <div class="lens-ring">
-            <!-- Service Segments (6) -->
-            <div class="service-segment" data-service="portrait" style="--i:1">
-                <span class="service-name">Portrait</span>
-            </div>
-            <div class="service-segment" data-service="wedding" style="--i:2">
-                <span class="service-name">Wedding</span>
-            </div>
-            <!-- Add 4 more segments -->
-        </div>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Section Styling */
+       
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Services Container */
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Improved Card Design */
+        .service-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: visible;
+            z-index: 10;
+            border-radius: 30px;
+            background: 
+                radial-gradient(circle at 20% 20%, 
+                    rgba(233, 30, 99, 0.2) 0%, 
+                    transparent 40%),
+                radial-gradient(circle at 80% 80%, 
+                    rgba(255, 152, 0, 0.2) 0%, 
+                    transparent 40%),
+                rgba(20, 20, 20, 0.9);
+            box-shadow: 
+                0 0 30px rgba(233, 30, 99, 0.3),
+                0 0 30px rgba(255, 152, 0, 0.3) inset;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .service-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 20%, 
+                    rgba(233, 30, 99, 0.1) 0%, 
+                    transparent 60%),
+                radial-gradient(circle at 80% 80%, 
+                    rgba(255, 152, 0, 0.1) 0%, 
+                    transparent 60%);
+            transform: rotate(45deg);
+            z-index: -1;
+            animation: rotateGradient 20s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .service-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 0 40px rgba(233, 30, 99, 0.5),
+                0 0 40px rgba(255, 152, 0, 0.5) inset;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #ff9800, #e91e63);
+        }
+
+        .service-description {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .service-features {
+            margin-bottom: 25px;
+            list-style: none;
+        }
+
+        .service-features li {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+        }
+
+        .service-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(45deg, #ff9800, #e91e63);
+            border-radius: 50%;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ff9800;
+            text-align: right;
+        }
+
+        /* Single Photo Display */
+        .photo-display {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .photo-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .photo-item.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .photo-controls {
+            display: flex;
+            margin-top: 30px;
+            position: relative;
+gap:10px;
+align-items: center;
+justify-content: space-between;
+            z-index: 20;
+        }
+
+        .photo-btn {
+            padding: 10px 25px;
+            background: linear-gradient(45deg, #ff9800, #e91e63);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+
+        .photo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.6);
+        }
+
+        .photo-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Your Original Flower Animations */
+        .flowers {
+            position: static;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+       
+
+        /* Petals */
+        .petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .petal {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.7;
+            filter: blur(0.5px);
+            animation: falling linear infinite;
+        }
+
+     
+
+        @keyframes falling {
+            0% {
+                transform: translate(0, -10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--random-x), 100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .service-content {
+                max-width: 100%;
+                order: 2;
+                margin-bottom: 40px;
+            }
+            
+            .photo-display {
+                order: 1;
+            }
+            
+            .flower-left, .flower-right {
+                transform: scale(0.5);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .photo-display {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 50px 10px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-description {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+            
+            .service-content {
+                padding: 30px;
+            }
+            
+            .photo-display {
+                width: 260px;
+                height: 260px;
+            }
+            
+            .flower-left, .flower-right {
+                transform: scale(0.4);
+            }
+        }
+    </style>
+     <!-- Services Section -->
+    <section class="section" id="services">
+               <div class="petals" id="petals"></div> 
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-description">
+            Professional photography services crafted with the precision of film and the innovation of digital artistry. 
+            Every session is a collaboration to create something extraordinary.
+        </p>
         
-        <!-- Aperture Blades (Animated) -->
-        <div class="aperture">
-            <div class="blades"></div>
-            <div class="lens-center"></div>
-        </div>
-        
-        <!-- Service Preview (Dynamic Content) -->
-        <div class="service-preview">
-            <div class="preview-image" style="background-image: url('portrait-preview.jpg')"></div>
-            <div class="preview-content">
-                <h3>Portrait Sessions</h3>
-                <p>Professional lighting and film-inspired techniques.</p>
-                <button class="cta-button">View Portfolio</button>
+        <div class="services-container">
+            <div class="service-content">
+                <h3 class="service-title" id="service-title">Portrait Sessions</h3>
+                <p class="service-description" id="service-description">Capture your unique personality with professional lighting and film inspired techniques.</p>
+                <ul class="service-features" id="service-features">
+                    <li>Natural light & studio</li>
+                    <li>Individual & group</li>
+                    <li>Professional headshots</li>
+                </ul>
+                <div class="service-price" id="service-price">From $250</div>
+            </div>
+            
+            <div class="photo-display">
+                <div class="photo-item active" id="photo-current"></div>
+                
+              
             </div>
         </div>
-    </div>
-    
-    <!-- Navigation Arrows -->
-    <button class="lens-nav prev">←</button>
-    <button class="lens-nav next">→</button>
+          <div class="photo-controls">
+                    <button class="photo-btn" id="photo-prev-btn" disabled>Previous</button>
+                    <button class="photo-btn" id="photo-next-btn">Next</button>
+                </div>
+    </section>
+
+    <!-- Flowers and Petals Animation -->
+
+   
+
+        
+       
+
+    <script>
+        // Service data - 6 services
+        const services = [
+            {
+                title: "Portrait Sessions",
+                description: "Capture your unique personality with professional lighting and film inspired techniques.",
+                features: [
+                    "Natural light & studio",
+                    "Individual & group",
+                    "Professional headshots"
+                ],
+                price: "From $250",
+                image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cG9ydHJhaXQlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D"
+            },
+            {
+                title: "Wedding Photography",
+                description: "Document your special day with cinematic storytelling and timeless elegance.",
+                features: [
+                    "Full day coverage",
+                    "Engagement sessions",
+                    "Digital gallery"
+                ],
+                price: "From $1200",
+                image: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VkZGluZyUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww"
+            },
+            {
+                title: "Commercial Shoots",
+                description: "Elevate your brand with compelling imagery that tells your story professionally.",
+                features: [
+                    "Product photography",
+                    "Corporate portraits",
+                    "Brand campaigns"
+                ],
+                price: "From $600",
+                image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29tbWVyY2lhbCUyMHNob290fGVufDB8fDB8fHww"
+            },
+            {
+                title: "Fashion Photography",
+                description: "Showcase your style with editorial-quality fashion photography.",
+                features: [
+                    "Studio or location shoots",
+                    "Model portfolio development",
+                    "Creative direction"
+                ],
+                price: "From $800",
+                image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzaGlvbiUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww"
+            },
+            {
+                title: "Event Coverage",
+                description: "Comprehensive documentation of your special events and celebrations.",
+                features: [
+                    "Corporate events",
+                    "Birthdays & anniversaries",
+                    "Full digital delivery"
+                ],
+                price: "From $400",
+                image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXZlbnQlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D"
+            },
+            {
+                title: "Fine Art Photography",
+                description: "Create museum-quality artwork with our fine art photography services.",
+                features: [
+                    "Concept development",
+                    "Large format printing",
+                    "Gallery preparation"
+                ],
+                price: "From $1000",
+                image: "https://images.unsplash.com/photo-1554080352-a7a3a69e6a76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmluZSUyMGFydCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fHww"
+            }
+        ];
+
+        // Photo display functionality
+        const prevBtn = document.getElementById('photo-prev-btn');
+        const nextBtn = document.getElementById('photo-next-btn');
+        const currentPhoto = document.getElementById('photo-current');
+        let currentIndex = 0;
+
+        // Create falling petals
+        function createPetals() {
+            const petalsContainer = document.getElementById('petals');
+            const petalCount = 8;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                
+                const size = Math.random() * 10 + 10;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                
+                const colors = ['#ffb6c1', '#ffd700', '#98fb98', '#add8e6', '#dda0dd'];
+                petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                petal.style.left = `${Math.random() * 100}%`;
+                
+                const duration = Math.random() * 10 + 5;
+                const delay = Math.random() * 5;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+                
+                petal.style.setProperty('--random-x', `${Math.random() * 100 - 50}px`);
+                
+                petalsContainer.appendChild(petal);
+            }
+        }
+
+        // Update service content
+        function updateServiceContent(index) {
+            document.getElementById('service-title').textContent = services[index].title;
+            document.getElementById('service-description').textContent = services[index].description;
+            
+            const featuresList = document.getElementById('service-features');
+            featuresList.innerHTML = '';
+            services[index].features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+            
+            document.getElementById('service-price').textContent = services[index].price;
+        }
+
+        // Update photo display
+        function updatePhotoDisplay() {
+            // Update buttons
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === services.length - 1;
+            
+            // Update service content
+            updateServiceContent(currentIndex);
+            
+            // Set current photo
+            currentPhoto.style.backgroundImage = `url('${services[currentIndex].image}')`;
+        }
+
+        // Change photo
+        function changePhoto(direction) {
+            // Fade out current photo
+            currentPhoto.style.opacity = 0;
+            
+            setTimeout(() => {
+                if (direction === 'next' && currentIndex < services.length - 1) {
+                    currentIndex++;
+                } else if (direction === 'prev' && currentIndex > 0) {
+                    currentIndex--;
+                }
+                
+                // Update content and photo
+                updatePhotoDisplay();
+                
+                // Fade in new photo
+                setTimeout(() => {
+                    currentPhoto.style.opacity = 1;
+                }, 50);
+            }, 300);
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', () => changePhoto('next'));
+        prevBtn.addEventListener('click', () => changePhoto('prev'));
+
+        // Initialize
+        updatePhotoDisplay();
+        createPetals();
+    </script>
 </section>
+
+  
+   
+
+    
+   
     <!-- Add this CSS to your style section -->
 <style>
     /* Portfolio Section Styles */
-   
+    .portfolio-section {
+        position: relative;
+        padding: 80px 5%;
+        background: #0a0a0a;
+    }
 
     .portfolio-tabs {
         display: flex;
@@ -1537,7 +2064,7 @@ body.loading {
 </style>
 
 <!-- Portfolio Section HTML -->
-<section class="  portfolio-section" id="portfolio">
+<section class="portfolio-section" id="portfolio">
     <h2 class="section-title">My Works</h2>
     
     <div class="portfolio-tabs">
@@ -1561,28 +2088,28 @@ body.loading {
         // Your image array with local files
         const images = [
             // Wedding Photos
-            { src: "wedding1.webp", category: "wedding", caption: "First Dance" },
-            { src: "wedding2.webp", category: "wedding", caption: "Bride's Smile" },
-            { src: "wedding3.webp", category: "wedding", caption: "Ring Exchange" },
-            { src: "wedding4.webp", category: "wedding", caption: "Reception" },
+            { src: "wedding1.jpeg", category: "wedding", caption: "First Dance" },
+            { src: "wedding2.jpeg", category: "wedding", caption: "Bride's Smile" },
+            { src: "wedding3.jpeg", category: "wedding", caption: "Ring Exchange" },
+            { src: "wedding4.jpeg", category: "wedding", caption: "Reception" },
             
             // Portrait Photos
-            { src: "potrait1.webp", category: "portrait", caption: "Thoughtful" },
-            { src: "potrait2.webp", category: "portrait", caption: "Serene" },
-            { src: "potrait3.webp", category: "portrait", caption: "Expressive" },
-            { src: "potrait4.webp", category: "portrait", caption: "Natural" },
+            { src: "potrait1.jpeg", category: "portrait", caption: "Thoughtful" },
+            { src: "potrait2.jpeg", category: "portrait", caption: "Serene" },
+            { src: "potrait3.jpeg", category: "portrait", caption: "Expressive" },
+            { src: "potrait4.jpeg", category: "portrait", caption: "Natural" },
             
             // Travel Photos
-            { src: "travel1.webp", category: "travel", caption: "Mountain View" },
-            { src: "travel2.webp", category: "travel", caption: "Misty Morning" },
-            { src: "travel3.webp", category: "travel", caption: "Road Trip" },
-            { src: "travel4.webp", category: "travel", caption: "Lakeside" },
+            { src: "travel1.jpeg", category: "travel", caption: "Mountain View" },
+            { src: "travel2.jpeg", category: "travel", caption: "Misty Morning" },
+            { src: "travel3.jpeg", category: "travel", caption: "Road Trip" },
+            { src: "travel4.jpeg", category: "travel", caption: "Lakeside" },
             
             // Fashion Photos
-            { src: "fashion1.webp", category: "fashion", caption: "Urban Style" },
-            { src: "fashion2.webp", category: "fashion", caption: "Elegance" },
-            { src: "fashion3.webp", category: "fashion", caption: "Streetwear" },
-            { src: "fashion4.webp", category: "fashion", caption: "Bold Look" }
+            { src: "fashion1.jpeg", category: "fashion", caption: "Urban Style" },
+            { src: "fashion2.jpeg", category: "fashion", caption: "Elegance" },
+            { src: "fashion3.jpeg", category: "fashion", caption: "Streetwear" },
+            { src: "fashion4.jpeg", category: "fashion", caption: "Bold Look" }
         ];
 
         // DOM elements
@@ -1750,13 +2277,18 @@ body.loading {
             </div>
         </div>
     </section>
-    <section class="section" id="process">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxFrame Process</title>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
+  
+      <style>
         :root {
             --primary-color: #9c27b0;
             --secondary-color: #e91e63;
@@ -2076,6 +2608,7 @@ body.loading {
         });
     </script>
 </section>
+   
    <!-- COMPLETE TESTIMONIAL SECTION -->
     
   <!-- Section Header -->
@@ -2822,7 +3355,8 @@ document.head.appendChild(styleElement);
         </div>
     </section>
 
-  
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     
     <script>
         // Initialize Swiper
@@ -3086,7 +3620,7 @@ navItems.forEach(item => {
         });
 
         // Activate cursor on hover elements
-        const hoverElements = document.querySelectorAll('a, button, .service-card, .studio-feature, .testimonial-card, .film-frame, input, textarea, select');
+        const hoverElements = document.querySelectorAll('a, button, .service-card, .process-step, .studio-feature, .testimonial-card, .film-frame, input, textarea, select');
         
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -3275,7 +3809,7 @@ window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
 
         // Initialize animation state
-        document.querySelectorAll('.pricing-card, .testimonial-card, .studio-feature').forEach(el => {
+        document.querySelectorAll('.pricing-card, .process-step, .testimonial-card, .studio-feature').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -3284,42 +3818,6 @@ window.addEventListener('scroll', animateOnScroll);
         // Run on load and scroll
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', animateOnScroll);
-        let currentAngle = 0;
-const segments = 6;
-const ring = document.querySelector('.lens-ring');
-
-// Rotate lens on arrow click
-document.querySelectorAll('.lens-nav').forEach(button => {
-    button.addEventListener('click', () => {
-        currentAngle += button.classList.contains('next') ? 60 : -60;
-        ring.style.transform = `rotate(${currentAngle}deg)`;
-        updateActiveService();
-    });
-});
-
-// Swipe for mobile
-let touchStartX = 0;
-ring.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-});
-
-ring.addEventListener('touchend', (e) => {
-    if (touchStartX - e.changedTouches[0].clientX > 50) {
-        currentAngle += 60; // Swipe left
-    } else if (touchStartX - e.changedTouches[0].clientX < -50) {
-        currentAngle -= 60; // Swipe right
-    }
-    ring.style.transform = `rotate(${currentAngle}deg)`;
-    updateActiveService();
-});
-
-// Update active service
-function updateActiveService() {
-    const activeIndex = (360 - (currentAngle % 360)) / 60;
-    document.querySelectorAll('.service-segment').forEach((seg, i) => {
-        seg.classList.toggle('active', i === activeIndex);
-    });
-}
     </script>
     
 </body>
