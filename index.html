@@ -31,10 +31,7 @@
     <div class="scroll-progress" id="scrollProgress"></div>
 
 
-        <!-- Back to Top Button -->
-        <a href="#" class="back-to-top" id="backToTop">
-            <i class="fas fa-arrow-up"></i>
-        </a>
+      
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
@@ -1972,6 +1969,7 @@ document.head.appendChild(styleElement);
     </section>
 
     <!-- Footer -->
+     
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
@@ -2023,7 +2021,10 @@ document.head.appendChild(styleElement);
                 </div>
             </div>
         </div>
+          <a href="#home"><button id="backToTop" title="Go to top">↑</button></a>
     </footer>
+   
+           
 
     <script>
   // Show loader immediately
@@ -2048,28 +2049,6 @@ window.addEventListener('load', function() {
   }, 1200);
 });
 
-// Back-to-top button functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const backToTop = document.getElementById('backToTop');
-  
-  if (backToTop) {
-    window.addEventListener('scroll', function() {
-      if (window.pageYOffset > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    }, { passive: true });
-    
-    backToTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-});
 
 // Navbar scroll effect
 window.addEventListener('scroll', function() {
@@ -2192,6 +2171,19 @@ navItems.forEach(item => {
         document.querySelectorAll('.stats, .pricing-card').forEach(element => {
             observer.observe(element);
         });
+
+window.onscroll = function () {
+  const btn = document.getElementById("backToTop");
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+// document.getElementById("backToTop").onclick = function () {
+//   window.scrollTo({ top: 0, behavior: "smooth" });
+// };
 
     </script>
     
