@@ -1323,156 +1323,176 @@
 </section>
 
 <script>
+// TESTIMONIAL SLIDER
 document.addEventListener('DOMContentLoaded', function() {
-    // Cache DOM elements
-    const testimonials = document.querySelectorAll('.testimonial-card');
-    const avatars = document.querySelectorAll('.author-avatar');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-    let autoSlideInterval;
+  // Elements
+  const testimonials = document.querySelectorAll('#luxframe-testimonials .testimonial-card');
+  const avatars = document.querySelectorAll('#luxframe-testimonials .author-avatar');
+  const dots = document.querySelectorAll('#luxframe-testimonials .dot');
+  let currentIndex = 0;
+  let interval;
+
+  // Show specific testimonial
+  function showTestimonial(index) {
+    currentIndex = index;
     
-    // Initialize the slider
-    function initTestimonialSlider() {
-        showTestimonial(currentIndex);
-        startAutoSlide();
-        setupEventListeners();
-    }
+    // Hide all testimonials
+    testimonials.forEach(card => {
+      card.style.display = 'none';
+      card.classList.remove('active');
+    });
     
-    // Show specific testimonial
-    function showTestimonial(index) {
-        // Validate index
-        if (index < 0) index = testimonials.length - 1;
-        if (index >= testimonials.length) index = 0;
+    // Show selected testimonial
+    testimonials[index].style.display = 'block';
+    setTimeout(() => {
+      testimonials[index].classList.add('active');
+    }, 50);
+    
+    // Update avatars
+    avatars.forEach((avatar, i) => {
+      const avatarWrapper = avatar.querySelector('.avatar-wrapper');
+      avatar.style.filter = 'grayscale(100%)';
+      avatar.style.opacity = '0.7';
+      avatar.style.transform = 'scale(1)';
+      avatar.style.zIndex = '1';
+      avatarWrapper.style.border = '2px solid transparent';
+      
+      // Remove glow
+      const glow = avatar.querySelector('.avatar-glow');
+      if (glow) glow.remove();
+      
+      // Update active avatar
+      if (i === index) {
+        avatar.style.filter = 'grayscale(0%)';
+        avatar.style.opacity = '1';
+        avatar.style.transform = 'scale(1.2)';
+        avatar.style.zIndex = '3';
+        avatarWrapper.style.border = '2px solid #e91e63';
         
-        currentIndex = index;
-        
-        // Update testimonials
-        testimonials.forEach((card, i) => {
-            card.style.display = i === index ? 'block' : 'none';
-            card.classList.toggle('active', i === index);
-        });
-        
-        // Update avatars
-        avatars.forEach((avatar, i) => {
-            const isActive = i === index;
-            avatar.style.filter = isActive ? 'grayscale(0%)' : 'grayscale(100%)';
-            avatar.style.opacity = isActive ? '1' : '0.7';
-            avatar.style.transform = isActive ? 'scale(1.2)' : 'scale(1)';
-            avatar.style.zIndex = isActive ? '3' : '1';
-            
-            const avatarWrapper = avatar.querySelector('.avatar-wrapper');
-            avatarWrapper.style.border = isActive ? '2px solid #e91e63' : '2px solid transparent';
-            
-            // Update glow effect
-            let glow = avatar.querySelector('.avatar-glow');
-            if (isActive && !glow) {
-                glow = document.createElement('div');
-                glow.className = 'avatar-glow';
-                glow.style.cssText = 'position:absolute; top:-15px; left:-15px; right:-15px; bottom:-15px; border-radius:50%; background:radial-gradient(circle, rgba(233,30,99,0.4) 0%, transparent 70%); animation:pulse 3s infinite;';
-                avatar.prepend(glow);
-            } else if (!isActive && glow) {
-                glow.remove();
-            }
-        });
-        
-        // Update dots
-        dots.forEach((dot, i) => {
-            const isActive = i === index;
-            dot.classList.toggle('active', isActive);
-            dot.style.width = isActive ? '14px' : '12px';
-            dot.style.height = isActive ? '14px' : '12px';
-            dot.style.background = isActive ? '#e91e63' : 'rgba(255,255,255,0.3)';
-            
-            // Update pulse effect
-            let pulse = dot.querySelector('.dot-pulse');
-            if (isActive && !pulse) {
-                pulse = document.createElement('div');
-                pulse.className = 'dot-pulse';
-                pulse.style.cssText = 'position:absolute; top:-3px; left:-3px; right:-3px; bottom:-3px; border-radius:50%; border:1px solid rgba(233,30,99,0.5); animation:ripple 1.5s infinite;';
-                dot.appendChild(pulse);
-            } else if (!isActive && pulse) {
-                pulse.remove();
-            }
-        });
-    }
+        // Add glow
+        const glow = document.createElement('div');
+        glow.className = 'avatar-glow';
+        glow.style.cssText = 'position:absolute; top:-15px; left:-15px; right:-15px; bottom:-15px; border-radius:50%; background:radial-gradient(circle, rgba(233,30,99,0.4) 0%, transparent 70%); animation:pulse 3s infinite;';
+        avatar.prepend(glow);
+      }
+    });
     
-    // Navigation functions
-    function goToPrev() {
-        showTestimonial(currentIndex - 1);
+    // Update dots
+    dots.forEach((dot, i) => {
+      dot.classList.remove('active');
+      dot.style.width = '12px';
+      dot.style.height = '12px';
+      dot.style.background = 'rgba(255,255,255,0.3)';
+      // Remove pulse if exists
+      const pulse = dot.querySelector('.dot-pulse');
+      if (pulse) pulse.remove();
+      
+      if (i === index) {
+        dot.classList.add('active');
+        dot.style.width = '14px';
+        dot.style.height = '14px';
+        dot.style.background = '#e91e63';
+        // Add pulse effect to active dot
+        const pulseDiv = document.createElement('div');
+        pulseDiv.className = 'dot-pulse';
+        pulseDiv.style.cssText = 'position:absolute; top:-3px; left:-3px; right:-3px; bottom:-3px; border-radius:50%; border:1px solid rgba(233,30,99,0.5); animation:ripple 1.5s infinite;';
+        dot.appendChild(pulseDiv);
+      }
+    });
+  }
+
+  // Auto-rotate
+  function autoSlide() {
+    const nextIndex = (currentIndex + 1) % testimonials.length;
+    showTestimonial(nextIndex);
+  }
+
+  // Start auto-slide
+  function startAutoSlide() {
+    clearInterval(interval);
+    interval = setInterval(autoSlide, 5000);
+  }
+
+  // Initialize
+  showTestimonial(0);
+  startAutoSlide();
+
+  // Click events for avatars
+  avatars.forEach(avatar => {
+    avatar.addEventListener('click', function() {
+      const index = parseInt(this.getAttribute('data-index'));
+      showTestimonial(index);
+      resetAutoSlide();
+    });
+  });
+
+  // Click events for dots
+  dots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      const index = parseInt(this.getAttribute('data-index'));
+      showTestimonial(index);
+      resetAutoSlide();
+    });
+  });
+
+  // Reset auto-slide timer
+  function resetAutoSlide() {
+    clearInterval(interval);
+    startAutoSlide();
+  }
+
+  // Pause on hover
+  const container = document.getElementById('luxframe-testimonials');
+  if (container) {
+    container.addEventListener('mouseenter', () => clearInterval(interval));
+    container.addEventListener('mouseleave', startAutoSlide);
+  }
+
+  // Mobile touch support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  container.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    clearInterval(interval);
+  }, {passive: true});
+  
+  container.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+    startAutoSlide();
+  }, {passive: true});
+  
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      // Swipe left - next
+      const nextIndex = (currentIndex + 1) % testimonials.length;
+      showTestimonial(nextIndex);
+    } else if (touchEndX > touchStartX + 50) {
+      // Swipe right - previous
+      const prevIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(prevIndex);
     }
-    
-    function goToNext() {
-        showTestimonial(currentIndex + 1);
-    }
-    
-    function goToIndex(index) {
-        showTestimonial(index);
-    }
-    
-    // Auto-slide functionality
-    function startAutoSlide() {
-        stopAutoSlide();
-        autoSlideInterval = setInterval(goToNext, 5000);
-    }
-    
-    function stopAutoSlide() {
-        if (autoSlideInterval) {
-            clearInterval(autoSlideInterval);
-        }
-    }
-    
-    function resetAutoSlide() {
-        stopAutoSlide();
-        startAutoSlide();
-    }
-    
-    // Event listeners setup
-    function setupEventListeners() {
-        // Dot click events
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-index'));
-                if (!isNaN(index)) {
-                    goToIndex(index);
-                    resetAutoSlide();
-                }
-            });
-        });
-        
-        // Pause on hover
-        const container = document.getElementById('luxframe-testimonials');
-        if (container) {
-            container.addEventListener('mouseenter', stopAutoSlide);
-            container.addEventListener('mouseleave', startAutoSlide);
-        }
-        
-        // Touch support
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        container.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-            stopAutoSlide();
-        }, {passive: true});
-        
-        container.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            startAutoSlide();
-        }, {passive: true});
-        
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                goToNext();
-            } else if (touchEndX > touchStartX + 50) {
-                goToPrev();
-            }
-        }
-    }
-    
-    // Initialize everything
-    initTestimonialSlider();
+  }
+
+  // Create floating particles
+  const particlesContainer = document.querySelector('.floating-particles');
+  const particleCount = 20;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.style.position = 'absolute';
+    particle.style.width = `${Math.random() * 4 + 2}px`;
+    particle.style.height = particle.style.width;
+    particle.style.backgroundColor = ['#e91e63', '#9c27b0', '#ff9800', '#2196f3'][Math.floor(Math.random() * 4)];
+    particle.style.borderRadius = '50%';
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.animation = `particleFloat ${Math.random() * 20 + 10}s linear ${Math.random() * 5}s infinite`;
+    particlesContainer.appendChild(particle);
+  }
 });
+
 // Animation keyframes
 const styleElement = document.createElement('style');
 styleElement.textContent = `
